@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Modal } from "../../../common/modal/Modal"
 import { Textarea } from "../../../common/textarea/Textarea"
 import { Input } from "../../../common/input/Input"
@@ -15,16 +15,43 @@ const DocType = () => {
     const [suggestedSize, setSuggestedSize] = useState([])
     const [showCustomSizeInput, setShowCustomSizeInput] = useState(false)
 
-    const documents = [
-        'Poster',
-        'Banner / Flex',
-        'Brochure',
-        'Invitation',
-        'Presentation',
-    ]
-    const sizes = [
-        'A1', 'A2', 'A3', 'A4', 'B1', 'B2', 'B3', 'B4'
-    ]
+    const [documents, setDocuments] = useState([])
+    const [sizes, setSizes] = useState([])
+
+    const getDocumentsData = () => {
+        fetch(process.env.REACT_APP_SERVER_URL + '/documents', {
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => setDocuments(data.documents))
+            .catch(e => console.log(e))
+    }
+
+    const getSizesData = () => {
+        fetch(process.env.REACT_APP_SERVER_URL + '/sizes')
+            .then((res) => res.json())
+            .then((data) => setSizes(data.sizes))
+            .catch(e => console.log(e))
+    }
+
+    useEffect(() => {
+        getDocumentsData()
+        getSizesData()
+    }, [])
+
+    // const documents = [
+    //     'Poster',
+    //     'Banner / Flex',
+    //     'Brochure',
+    //     'Invitation',
+    //     'Presentation',
+    // ]
+    // const sizes = [
+    //     'A1', 'A2', 'A3', 'A4', 'B1', 'B2', 'B3', 'B4'
+    // ]
     const handleDocumentTypeChange = (value) => {
         setDocumentType(value)
         const filteredDocs = documents.filter(doc => value && doc.toLowerCase().includes(value.toLowerCase()))

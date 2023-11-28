@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { Button } from "../button/Button"
 import { DialogModalWrapper, FooterWrapper } from "./styles"
 

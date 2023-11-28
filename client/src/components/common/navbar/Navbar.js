@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Button } from "../button/Button"
 import { DialogModal } from "../dialogModal/DialogModal"
 import { LoginButtonWrapper, LogoWrapper, NavbarWrapper } from "./styles"

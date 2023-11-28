@@ -39,7 +39,3 @@ export const UnitDropdown = styled.select `
         outline-color:${desktop.formElements.focusColor};
     }
 `
-
-export const InputSeparator = styled.div `
-    width: 10%;
-`
