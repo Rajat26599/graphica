@@ -6,10 +6,10 @@ export const DropdownOptions = (props) => {
             {
                 <OptionsGroupWrapper>
                     { 
-                        props.items?.length==0 ? (<OptionWrapper>No match found</OptionWrapper>)
+                        props.items?.length===0 ? (<OptionWrapper>No match found</OptionWrapper>)
                         :    
-                        props.items.map(item => (
-                            <OptionWrapper onClick={() => props.onClick(item)}>{item}</OptionWrapper>
+                        props.items.map((item, index) => (
+                            <OptionWrapper key={index} onClick={() => props.onClick(item)}>{item}</OptionWrapper>
                         ))
                     
                     }

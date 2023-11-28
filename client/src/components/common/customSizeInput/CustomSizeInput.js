@@ -1,5 +1,5 @@
 import { Label } from "../label/Label"
-import { CustomSizeInputWrapper, InputWrapper, MainInput, UnitDropdown, InputAreaWrapper, InputSeparator } from "./styles"
+import { CustomSizeInputWrapper, InputWrapper, MainInput, UnitDropdown, InputAreaWrapper } from "./styles"
 
 export const CustomSizeInput = (props) => {
     const units = ['px', 'mm', 'cm', 'inch', 'foot', 'm']
