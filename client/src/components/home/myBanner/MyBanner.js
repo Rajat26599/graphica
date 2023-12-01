@@ -8,7 +8,8 @@ export const MyBanner = () => {
     const [isOpen, setIsOpen] = useState(false)
 
     return (
-        <Banner 
+        <Banner
+            id='home-banner'
             backgroundColor={colors.lightPink} 
             taglineLineOne={'We Create'}
             taglineLineTwoPartOne={'Your'}

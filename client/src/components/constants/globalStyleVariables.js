@@ -17,3 +17,7 @@ export const desktop = {
         textPadding: '0.5rem',
     }
 }
+
+export const breakpoints = {
+    mobile: '728px'
+}
