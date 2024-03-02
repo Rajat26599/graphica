@@ -1,8 +1,19 @@
 const express = require('express');
 require('dotenv').config()
 const app = express();
+var bodyParser = require('body-parser')
+
+const mongoose = require('mongoose');
+const UserModel = require('./models/Users')
+
+mongoose.connect(
+    'mongodb+srv://silver:Rajat123@cluster0.sktt3xq.mongodb.net/graphica?retryWrites=true&w=majority&appName=Cluster0'
+);
 
 const port = process.env.PORT;
+
+// parse application/json
+app.use(bodyParser.json())
 
 // Add headers before the routes are defined
 app.use(function (req, res, next) {
@@ -46,3 +57,20 @@ app.get('/sizes', (req, res) => {
     res.json(data);
 });
 
+app.get('/users', (req, res) => {
+    UserModel.find({})
+    .then((users) => {
+        res.json(users)
+    })
+    .catch((err) => console.log(err))
+})
+
+app.post('/createUser', async (req, res) => {
+    const user = req.body;
+    const newUser = new UserModel(user);
+    await newUser.save();
+    res.json({
+        data: newUser,
+        status: 'success'
+    });
+})
