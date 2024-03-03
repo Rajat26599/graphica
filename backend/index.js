@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const UserModel = require('./models/Users')
 
 mongoose.connect(
-    'mongodb+srv://silver:Rajat123@cluster0.sktt3xq.mongodb.net/graphica?retryWrites=true&w=majority&appName=Cluster0'
+    process.env.MONGO_URL
 );
 
 const port = process.env.PORT;
