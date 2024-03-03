@@ -1,22 +1,41 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "../button/Button"
-import { DialogModal } from "../dialogModal/DialogModal"
+// import { DialogModal } from "../dialogModal/DialogModal"
 import { LoginButtonWrapper, LogoWrapper, NavbarWrapper } from "./styles"
+import { Register } from "../../register/Register"
+import { Modal } from "../modal/Modal"
+import { Login } from "../../login/Login"
 
 export const Navbar = (props) => {
-    const [isOpen, setIsOpen] = useState(false)
+    const [ isOpen, setIsOpen ] = useState(false)
+    const [ page, setPage ] = useState('register')
 
+    useEffect(() => {
+        console.log('page', page)
+    }, [page])
     return (
         <NavbarWrapper>
             <LogoWrapper>
                 {props.logo}
             </LogoWrapper>
-            <DialogModal 
+            <Modal
+                isOpen={isOpen} 
+                onClose={() => setIsOpen(false)}
+            >
+                {
+                    page === 'register' ?
+                        <Register setPage={setPage} />
+                    :
+                        <Login setPage={setPage} />
+                    
+                }
+            </Modal>
+            {/* <DialogModal 
                 isOpen={isOpen} 
                 onClose={() => setIsOpen(false)}
                 text={'Feature Unavailable'}
                 primaryBtnText={'Ok'}
-                ></DialogModal>
+            ></DialogModal> */}
             <LoginButtonWrapper>
                 <Button
                     btnText={props.btnText}
