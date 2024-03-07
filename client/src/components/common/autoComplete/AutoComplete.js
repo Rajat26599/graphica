@@ -9,7 +9,7 @@ export const AutoComplete = (props) => {
     useEffect(() => {
         if(props.allItems.includes(props.value) || props.value==='Other' || props.value==='' ) setShowDropdownOptions(false)
         else setShowDropdownOptions(true)
-    }, [props.value])
+    }, [props.value, props.allItems])
 
     return (
         <AutoCompleteWrapper>
