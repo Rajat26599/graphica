@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Button } from "../button/Button"
 // import { DialogModal } from "../dialogModal/DialogModal"
 import { LoginButtonWrapper, LogoWrapper, NavbarWrapper } from "./styles"
@@ -10,9 +10,6 @@ export const Navbar = (props) => {
     const [ isOpen, setIsOpen ] = useState(false)
     const [ page, setPage ] = useState('register')
 
-    useEffect(() => {
-        console.log('page', page)
-    }, [page])
     return (
         <NavbarWrapper>
             <LogoWrapper>
