@@ -5,7 +5,9 @@ const cors = require("cors");
 const bodyParser = require('body-parser')
 
 const mongoose = require('mongoose');
-const UserModel = require('./models/Users')
+
+const designRouter = require('./routes/design')
+const authRouter = require('./routes/auth')
 
 mongoose.connect(
     process.env.MONGO_URL
@@ -49,73 +51,75 @@ app.listen(port, () => {
   console.log('Listening on port ' + port);
 });
 
-app.get('/documents', (req, res) => {
-    const data = { documents: [
-        'Poster',
-        'Banner / Flex',
-        'Brochure',
-        'Invitation',
-        'Presentation',
-    ] };
-    res.json(data);
-});
+app.use('/design', designRouter)
+// app.get('/documents', (req, res) => {
+//     const data = { documents: [
+//         'Poster',
+//         'Banner / Flex',
+//         'Brochure',
+//         'Invitation',
+//         'Presentation',
+//     ] };
+//     res.json(data);
+// });
 
-app.get('/sizes', (req, res) => {
-    const data = { sizes: [
-        'A1', 'A2', 'A3', 'A4', 'B1', 'B2', 'B3', 'B4'
-    ] };
-    res.json(data);
-});
+// app.get('/sizes', (req, res) => {
+//     const data = { sizes: [
+//         'A1', 'A2', 'A3', 'A4', 'B1', 'B2', 'B3', 'B4'
+//     ] };
+//     res.json(data);
+// });
 
-app.get('/users', (req, res) => {
-    UserModel.find({})
-    .then((users) => {
-        res.json(users)
-    })
-    .catch((err) => console.log(err))
-})
+app.use('/auth', authRouter)
+// app.get('/users', (req, res) => {
+//     UserModel.find({})
+//     .then((users) => {
+//         res.json(users)
+//     })
+//     .catch((err) => console.log(err))
+// })
 
-app.post('/createUser', async (req, res) => {
-    const user = req.body;
-    const newUser = new UserModel(user);
-    await newUser.save();
-    res.json({
-        data: newUser,
-        status: 'success'
-    });
-})
+// app.post('/createUser', async (req, res) => {
+//     const user = req.body;
+//     const newUser = new UserModel(user);
+//     await newUser.save();
+//     res.json({
+//         data: newUser,
+//         status: 'success'
+//     });
+// })
 
-app.post('/register', async (req, res) => {
-    const user = req.body;
-    const newUser = new UserModel(user);
-    await newUser.save();
-    res.json({
-        status: 'success'
-    });
-})
+// app.post('/register', async (req, res) => {
+//     const user = req.body;
+//     const newUser = new UserModel(user);
+//     await newUser.save();
+//     res.json({
+//         status: 'success'
+//     });
+// })
 
-app.post('/login', async (req, res) => {
-    const user = req.body;
-    UserModel.findOne({email: user.email})
-    .then((u) => {
-        if(u) {
-            if(u.password === user.password) {
-                res.json({
-                    userData: u,
-                    status: 'success'
-                })
-            } else {
-                res.status(400).json({
-                    errorDesc: 'Invalid username or password',
-                    status: 'error'
-                })
-            }
-        } else {
-            res.status(400).json({
-                errorDesc: 'User does not exist',
-                status: 'error'
-            })
-        }
-    })
-    .catch((err) => console.log(err))
-})
+// app.post('/login', async (req, res) => {
+//     const user = req.body;
+//     UserModel.findOne({email: user.email})
+//     .then((u) => {
+//         if(u) {
+//             if(u.password === user.password) {
+//                 res.json({
+//                     userData: u,
+//                     status: 'success'
+//                 })
+//             } else {
+//                 res.status(400).json({
+//                     errorDesc: 'Invalid username or password',
+//                     status: 'error'
+//                 })
+//             }
+//         } else {
+//             res.status(400).json({
+//                 errorDesc: 'User does not exist',
+//                 status: 'error'
+//             })
+//         }
+//     })
+//     .catch((err) => console.log(err))
+// })

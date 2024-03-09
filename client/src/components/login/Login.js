@@ -9,6 +9,7 @@ import { connect } from "react-redux"
 import { useDispatch } from "react-redux"
 
 import { setLogin, setUserData } from "../../redux/actions/authActions"
+import { endpoints } from "../constants/endpoints"
 
 const mapStateToProps = (state) => {
     return {
@@ -25,7 +26,7 @@ const Login = (props) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(process.env.REACT_APP_SERVER_URL + '/login', {
+        fetch(process.env.REACT_APP_SERVER_URL + endpoints.AUTH_LOGIN, {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json',
