@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { LoginForm, LoginWrapper } from "./styles"
-import { useNavigate } from "react-router-dom"
 
 import { Button } from "../common/button/Button"
 import { Input } from "../common/input/Input"
@@ -23,7 +22,6 @@ const Login = (props) => {
     const [ errorDesc, setErrorDesc ] = useState('')
 
     const dispatch = useDispatch()
-    const navigate = useNavigate()
     
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -42,7 +40,6 @@ const Login = (props) => {
                 if(data.status==='success') {
                     dispatch(setLogin(true))
                     dispatch(setUserData(data.userData))
-                    navigate('/dashboard')
                 } else if(data.status==='error') {
                     setErrorDesc(data.errorDesc)
                 }

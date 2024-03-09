@@ -7,9 +7,17 @@ export const setUserData = (userData) => {
     }
 }
 
+export const clearUserData = () => {
+    return {
+        type: actionTypes.SET_USER_DATA
+    }
+}
+
 export const setLogin = (isLogin) => {
     return {
         type: actionTypes.SET_LOGIN,
         payload: isLogin
     }
 }
+
+
