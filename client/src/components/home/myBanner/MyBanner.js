@@ -1,10 +1,17 @@
 import { useState } from "react"
 import { Banner } from "../../common/banner/Banner"
-import { DemandModal } from "./demandModal/DemandModal"
+import { DialogModal } from "../../common/dialogModal/DialogModal"
+import DemandModal from "./demandModal/DemandModal"
 import { colors } from "../../constants/globalStyleVariables"
 import homeBannerImg from "../../../assets/homeBannerImg.png"
+import { connect } from "react-redux"
 
-export const MyBanner = () => {
+const mapStateToProps = (state) => {
+    return {
+        isLogin: state.authReducers.isLogin
+    }
+}
+const MyBanner = (props) => {
     const [isOpen, setIsOpen] = useState(false)
 
     return (
@@ -19,8 +26,20 @@ export const MyBanner = () => {
             onClick={() => setIsOpen(true)}
             bannerImage={homeBannerImg}
             bannerImageWidth={'40%'}
-            >
-                <DemandModal isOpen={isOpen} setIsOpen={() => setIsOpen()} />
-            </Banner>
+        >
+            {
+                props.isLogin ?
+                    <DemandModal isOpen={isOpen} setIsOpen={setIsOpen} />
+                :
+                    <DialogModal 
+                        isOpen={isOpen} 
+                        onClose={() => setIsOpen(false)}
+                        text='Login to send your design requirement.'
+                        primaryBtnText='Ok'
+                    />    
+            }
+        </Banner>
     )
 }
+
+export default connect(mapStateToProps)(MyBanner)

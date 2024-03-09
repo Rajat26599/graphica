@@ -1,4 +1,5 @@
 const express = require('express');
+const DesignRequirementModel = require('../models/DesignRequirement');
 const router = express.Router();
 
 router.get('/documents', (req, res) => {
@@ -18,5 +19,16 @@ router.get('/sizes', (req, res) => {
     ] };
     res.json(data);
 });
+
+router.post('/requirement', async(req, res) => {
+    const requirement = req.body;
+    console.log(requirement)
+    const newRequirement = new DesignRequirementModel(requirement);
+    await newRequirement.save();
+    res.json({
+        data: requirement,
+        status: 'success'
+    });
+})
 
 module.exports = router;

@@ -8,6 +8,8 @@ export const Textarea = (props) => {
                 <WritingArea
                     rows={props.rows} 
                     placeholder={props.placeholder}
+                    onChange={props.onChange}
+                    value={props.value}
                 ></WritingArea>
 
             </TextareaWraper>
