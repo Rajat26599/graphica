@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Input } from "../common/input/Input"
-import { RegisterForm, RegisterWrapper } from "./styles"
+import { RegisterForm, RegisterWrapper, Roles, RolesList } from "./styles"
 import { Button } from "../common/button/Button"
 
 export const Register = (props) => {
@@ -48,8 +48,8 @@ export const Register = (props) => {
                 />
 
                 <label>You are a</label>
-                <ul>
-                    <li>
+                <RolesList>
+                    <Roles>
                         <input
                             type='checkbox'
                             value='Customer'
@@ -63,8 +63,8 @@ export const Register = (props) => {
                             }}
                         />
                         <label>Customer</label>
-                    </li>
-                    <li>
+                    </Roles>
+                    <Roles>
                         <input
                             type='checkbox'
                             value='Designer'
@@ -78,8 +78,8 @@ export const Register = (props) => {
                             }}
                         />
                         <label>Designer</label>
-                    </li>
-                </ul>
+                    </Roles>
+                </RolesList>
 
                 <Button 
                     type='submit'
