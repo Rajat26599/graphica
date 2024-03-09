@@ -4,7 +4,7 @@ export const Alert = (props) => {
     return (
         <AlertWrapper>
             <MyAlert>
-                <p>{props.errorDesc}</p>
+                <dt>{props.errorDesc}</dt>
             </MyAlert>
         </AlertWrapper>
     )
