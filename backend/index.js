@@ -93,3 +93,29 @@ app.post('/register', async (req, res) => {
         status: 'success'
     });
 })
+
+app.post('/login', async (req, res) => {
+    const user = req.body;
+    UserModel.findOne({email: user.email})
+    .then((u) => {
+        if(u) {
+            if(u.password === user.password) {
+                res.json({
+                    userData: u,
+                    status: 'success'
+                })
+            } else {
+                res.status(400).json({
+                    errorDesc: 'Invalid username or password',
+                    status: 'error'
+                })
+            }
+        } else {
+            res.status(400).json({
+                errorDesc: 'User does not exist',
+                status: 'error'
+            })
+        }
+    })
+    .catch((err) => console.log(err))
+})

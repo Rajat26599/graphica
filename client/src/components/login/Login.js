@@ -1,12 +1,79 @@
+import { useState } from "react"
+import { Button } from "../common/button/Button"
+import { Input } from "../common/input/Input"
 import { LoginForm, LoginWrapper } from "./styles"
 
-export const Login = (props) => {
+import { useDispatch } from "react-redux"
+import { setLogin } from "../../redux/actions/authActions"
+import { connect } from "react-redux"
+import { Alert } from "../common/alert/Alert"
+
+const mapStateToProps = (state) => {
+    return {
+        isLogin: state.isLogin
+    }
+}
+
+const Login = (props) => {
+    const [ email, setEmail ] = useState('')
+    const [ password, setPassword ] = useState('')
+    const [ errorDesc, setErrorDesc ] = useState('')
+
+    const dispatch = useDispatch()
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        fetch(process.env.REACT_APP_SERVER_URL + '/login', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email,
+                password
+            })
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if(data.status==='success') {
+                    dispatch(setLogin(true))
+                } else if(data.status==='error') {
+                    setErrorDesc(data.errorDesc)
+                }
+            })
+            .catch(e => console.log(e))
+    }
+
+    const getAlert = () => {
+        return errorDesc && <Alert errorDesc={errorDesc} />
+    }
+
     return (
         <LoginWrapper>
-            <LoginForm>
-                <h1>Login Form</h1>
+            <LoginForm onSubmit={(e) => handleSubmit(e)}>
+                <h2>Login</h2>
+                {getAlert()}
+                <Input
+                    type='email'
+                    label='Email'
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <Input 
+                    type='password'
+                    label='Password'
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <Button
+                    type='submit'
+                    btnText='Login'
+                />
+                <br /><br />
                 <button onClick={() => props.setPage('register')}>Don't have an account? Register</button>
             </LoginForm>
         </LoginWrapper>
     )
 }
+
+export default connect(mapStateToProps)(Login)
