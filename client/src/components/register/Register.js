@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Input } from "../common/input/Input"
 import { RegisterForm, RegisterWrapper, Roles, RolesList } from "./styles"
 import { Button } from "../common/button/Button"
+import { endpoints } from "../constants/endpoints"
 
 export const Register = (props) => {
     const [ email, setEmail ] = useState('')
@@ -10,7 +11,7 @@ export const Register = (props) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(process.env.REACT_APP_SERVER_URL + '/register', {
+        fetch(process.env.REACT_APP_SERVER_URL + endpoints.AUTH_REGISTER, {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json',

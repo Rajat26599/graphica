@@ -5,6 +5,7 @@ import { Input } from "../../../common/input/Input"
 import { AutoComplete } from "../../../common/autoComplete/AutoComplete"
 import { DoubleColumnWrapper, Column, ThankYouPageWrapper } from "./styles"
 import { CustomSizeInput } from "../../../common/customSizeInput/CustomSizeInput"
+import { endpoints } from "../../../constants/endpoints"
 
 const DocType = () => {
     const [documentType, setDocumentType] = useState('')
@@ -19,7 +20,7 @@ const DocType = () => {
     const [sizes, setSizes] = useState([])
 
     const getDocumentsData = () => {
-        fetch(process.env.REACT_APP_SERVER_URL + '/documents', {
+        fetch(process.env.REACT_APP_SERVER_URL + endpoints.DESIGN_DOCUMENTS, {
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
@@ -31,7 +32,7 @@ const DocType = () => {
     }
 
     const getSizesData = () => {
-        fetch(process.env.REACT_APP_SERVER_URL + '/sizes')
+        fetch(process.env.REACT_APP_SERVER_URL + endpoints.DESIGN_SIZES)
             .then((res) => res.json())
             .then((data) => setSizes(data.sizes))
             .catch(e => console.log(e))
