@@ -1,7 +1,7 @@
 import { NotFound } from "../common/notFound/NotFound"
-import { AdminDashboard } from "./AdminDashboard"
-import { DesignerDashboard } from './DesignerDashboard'
-import { CustomerDashboard } from './CustomerDashboard'
+import AdminDashboard from "./AdminDashboard"
+import DesignerDashboard from './DesignerDashboard'
+import CustomerDashboard from './CustomerDashboard'
 import { DashboardWrapper } from "./styles"
 import { connect } from "react-redux"
 
@@ -19,7 +19,7 @@ const Dashboard = (props) => {
             <>
                 {
                     props.userData.roles ? 
-                        props.userData.roles.map((role) => {
+                    props.userData.roles.map((role) => {
                             switch(role) {
                                 case 'admin':
                                     return <AdminDashboard />

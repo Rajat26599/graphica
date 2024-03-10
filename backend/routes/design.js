@@ -31,4 +31,22 @@ router.post('/requirement', async(req, res) => {
     });
 })
 
+router.post('/requirements', (req, res) => {
+    const user = req.body;
+    DesignRequirementModel.find({creator: {email: user.email}})
+    .then((requirements) => {
+        res.json(requirements)
+    })
+    .catch((err) => console.log(err))
+})
+
+router.get('/allRequirements', (req, res) => {
+    const user = req.body;
+    DesignRequirementModel.find({})
+    .then((requirements) => {
+        res.json(requirements)
+    })
+    .catch((err) => console.log(err))
+})
+
 module.exports = router;
