@@ -11,3 +11,8 @@ export const LeftCell = styled.dt`
 export const RightCell = styled.dd`
 
 `
+
+export const DetailsActionBtnWrapper = styled.div`
+    display: flex;
+    margin: 2rem 0;
+`

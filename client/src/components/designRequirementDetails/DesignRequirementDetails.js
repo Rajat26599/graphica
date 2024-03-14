@@ -1,20 +1,40 @@
 import { connect } from "react-redux"
-import { DesignRequirementDetailsWrapper, LeftCell, RightCell } from "./styles"
-import { useParams } from "react-router-dom"
+import { DesignRequirementDetailsWrapper, DetailsActionBtnWrapper, LeftCell, RightCell } from "./styles"
+import { useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { formatDate } from "../../util/commonMethods"
+import { Button } from "../common/button/Button"
+import { endpoints } from "../constants/endpoints"
 
 const mapStateToProps = (state) => {
     return {
         designRequirements: state.designRequirementsReducers.designRequirements,
-        allDesignRequirements: state.designRequirementsReducers.allDesignRequirements
+        allDesignRequirements: state.designRequirementsReducers.allDesignRequirements,
     }
 }
 
 const DesignRequirementDetails = (props) => {
     const [ selectedRequirement, setSelectedRequirement ] = useState(null)
 
+    const navigate = useNavigate()
     const { id } = useParams()
+
+    const deleteMyDesignRequirement = (id) => {
+        fetch(process.env.REACT_APP_SERVER_URL + endpoints.DELETE_DESIGN_REQUIREMENT, {
+            method: 'delete',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                id: id
+            })
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                navigate('/dashboard')
+            })
+            .catch(e => console.log(e))
+    }
 
     useEffect(() => {
         const matchedRequirements = [...props.allDesignRequirements, ...props.designRequirements].filter(r => r._id === id)
@@ -36,6 +56,10 @@ const DesignRequirementDetails = (props) => {
             <RightCell>{selectedRequirement?.creator.email}</RightCell><br />
             <LeftCell>Created on</LeftCell>
             <RightCell>{formatDate(selectedRequirement?.createdAt)}</RightCell>
+
+            <DetailsActionBtnWrapper>
+                <Button onClick={() => deleteMyDesignRequirement(id)}>Delete</Button>
+            </DetailsActionBtnWrapper>
         </DesignRequirementDetailsWrapper>
     )
 }

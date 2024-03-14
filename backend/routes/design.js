@@ -1,4 +1,5 @@
 const express = require('express');
+var mongodb= require('mongodb');
 const DesignRequirementModel = require('../models/DesignRequirement');
 const router = express.Router();
 
@@ -45,6 +46,20 @@ router.get('/allRequirements', (req, res) => {
     DesignRequirementModel.find({})
     .then((requirements) => {
         res.json(requirements)
+    })
+    .catch((err) => console.log(err))
+})
+
+router.delete('/requirement/delete', (req, res) => {
+    const id = req.body.id;
+    DesignRequirementModel.deleteOne({_id: new mongodb.ObjectId(id)})
+    .then(() => {
+        res.json({
+            data: {
+                id: id
+            },
+            status: 'success'
+        })
     })
     .catch((err) => console.log(err))
 })

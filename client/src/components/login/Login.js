@@ -71,8 +71,9 @@ const Login = (props) => {
                 />
                 <Button
                     type='submit'
-                    $btnText='Login'
-                />
+                    >
+                    Login
+                </Button>
         
                 <GoToRegister onClick={() => props.setPage('register')}>Don't have an account? Register</GoToRegister>
             </LoginForm>

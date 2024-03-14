@@ -78,9 +78,10 @@ const Navbar = (props) => {
                         </>
                     :
                         <Button
-                            $btnText={props.$btnText}
                             onClick={() => dispatch(showAuthModal(true))}
-                        />
+                            >
+                            {props.$btnText}
+                        </Button>
                 }
             </LoginButtonWrapper>
         </NavbarWrapper>
