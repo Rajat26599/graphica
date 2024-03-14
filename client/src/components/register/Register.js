@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Input } from "../common/input/Input"
-import { RegisterForm, RegisterWrapper, Roles, RolesList } from "./styles"
+import { GoToLogin, RegisterForm, RegisterWrapper, Roles, RolesList } from "./styles"
 import { Button } from "../common/button/Button"
 import { endpoints } from "../constants/endpoints"
 
@@ -86,8 +86,8 @@ export const Register = (props) => {
                     type='submit'
                     $btnText='Register'
                 />
-                <br /><br />
-                <button onClick={() => props.setPage('login')}>Already a member? Login</button>
+            
+                <GoToLogin onClick={() => props.setPage('login')}>Already a member? Login</GoToLogin>
             </RegisterForm>
         </RegisterWrapper>
     )

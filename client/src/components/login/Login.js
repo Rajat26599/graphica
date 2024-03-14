@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { LoginForm, LoginWrapper } from "./styles"
+import { GoToRegister, LoginForm, LoginWrapper } from "./styles"
 
 import { Button } from "../common/button/Button"
 import { Input } from "../common/input/Input"
@@ -73,8 +73,8 @@ const Login = (props) => {
                     type='submit'
                     $btnText='Login'
                 />
-                <br /><br />
-                <button onClick={() => props.setPage('register')}>Don't have an account? Register</button>
+        
+                <GoToRegister onClick={() => props.setPage('register')}>Don't have an account? Register</GoToRegister>
             </LoginForm>
         </LoginWrapper>
     )

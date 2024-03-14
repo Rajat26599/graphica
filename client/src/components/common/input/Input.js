@@ -1,11 +1,13 @@
 import { Label } from "../label/Label"
 import { InputWrapper, WritingArea } from "./styles"
+import { SubLabel } from "../subLabel/SubLabel"
 
 export const Input = (props) => {
 
     return (
         <InputWrapper>
-            <Label label={props.label}></Label>
+            <Label>{props.label}</Label>
+            <SubLabel>{props.subLabel}</SubLabel>
             <WritingArea 
                 type={props.type} 
                 value={props.value} 

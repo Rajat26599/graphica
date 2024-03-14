@@ -39,6 +39,9 @@ export const DocType = (props) => {
     useEffect(() => {
         getDocumentsData()
         getSizesData()
+
+        props.documentType === 'Other' && setShowCustomDocumentInput(true)
+        props.documentSize === 'Other' && setShowCustomSizeInput(true)
     }, [])
 
     const handleDocumentTypeChange = (value) => {
@@ -66,7 +69,8 @@ export const DocType = (props) => {
             <DoubleColumnWrapper>
                 <Column>
                     <AutoComplete
-                        label={'Document type'}
+                        label='Document type'
+                        subLabel='(eg. flex, banner, poster etc.)'
                         allItems={documents}
                         items={suggestedDocs}
                         value={props.documentType}
@@ -78,8 +82,8 @@ export const DocType = (props) => {
                     {
                         showCustomDocumentInput &&
                         <Input
-                            label={'Document name'} 
-                            width={'95%'}
+                            label='Document name' 
+                            width='95%'
                             />
                     }
                 </Column>
@@ -87,7 +91,8 @@ export const DocType = (props) => {
             <DoubleColumnWrapper>
                 <Column>
                     <AutoComplete
-                        label={'Size'}
+                        label='Size'
+                        subLabel='(eg. A4, B1 etc.)'
                         allItems={sizes}
                         items={suggestedSize}
                         value={props.documentSize}

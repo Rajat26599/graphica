@@ -14,3 +14,9 @@ export const Roles = styled.li`
     display: inline-block;
     margin-right: 1rem;
 `
+export const GoToLogin = styled.p`
+    &:hover {
+        color: blue;
+        text-decoration: underline;
+    }
+`

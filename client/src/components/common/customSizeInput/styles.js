@@ -4,6 +4,7 @@ import { colors, desktop } from "../../constants/globalStyleVariables";
 export const CustomSizeInputWrapper = styled.div `
     display: flex;
     justify-content: space-between;
+    margin: 1rem 0;
 `
 
 export const InputWrapper = styled.div `

@@ -1,4 +1,5 @@
 import { Label } from "../label/Label"
+import { SubLabel } from "../subLabel/SubLabel"
 import { CustomSizeInputWrapper, InputWrapper, MainInput, UnitDropdown, InputAreaWrapper } from "./styles"
 
 export const CustomSizeInput = (props) => {
@@ -8,7 +9,8 @@ export const CustomSizeInput = (props) => {
             {
                 ['Width', 'Height'].map((dimention) => (
                     <InputWrapper>
-                        <Label label={dimention} />
+                        <Label>{dimention}</Label>
+                        <SubLabel>{props.subLabel}</SubLabel>
                         <InputAreaWrapper>
                             <MainInput type={'number'}></MainInput>
                             <UnitDropdown>

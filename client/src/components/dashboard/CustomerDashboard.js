@@ -41,7 +41,7 @@ const CustomerDashboard = (props) => {
 
     return (
         <>
-            <h2>Customer Dashboard</h2>
+            <h2>Customer dashboard</h2>
             <BackgroundBoard
                 $borderStyles={{
                     width: '1px',

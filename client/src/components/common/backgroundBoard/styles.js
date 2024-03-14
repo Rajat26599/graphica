@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { screenWidth } from "../../constants/globalStyleVariables";
 
 export const MyBoard = styled.div`
     ${props => (
@@ -16,4 +17,12 @@ export const MyBoard = styled.div`
             text-overflow: ellipsis;
         `
     )}
+
+    @media (max-width: ${screenWidth.large})  { 
+        width: calc(50% - 1rem);
+    }
+
+    @media (max-width: ${screenWidth.medium})  { 
+        width: calc(100% - 1rem);
+    }
 `

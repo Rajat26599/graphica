@@ -5,7 +5,8 @@ import { MultiSelectWrapper, WritingArea } from "./styles"
 export const MultiSelect = (props) => {
     return (
         <MultiSelectWrapper>
-            <Label label={props.label}></Label>
+            <Label>{props.label}</Label>
+            <SubLabel>{props.subLabel}</SubLabel>
             <WritingArea placeholder={props.placeholder}></WritingArea>
             <DropdownOptions items={props.items} />
         </MultiSelectWrapper>
