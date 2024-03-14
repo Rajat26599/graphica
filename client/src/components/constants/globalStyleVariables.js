@@ -17,3 +17,10 @@ export const desktop = {
         textPadding: '0.5rem',
     }
 }
+
+export const screenWidth = {
+    small: '576px',
+    medium: '768px',
+    large: '992px',
+    extraLarge: '1200px'
+}

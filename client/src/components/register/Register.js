@@ -84,7 +84,7 @@ export const Register = (props) => {
 
                 <Button 
                     type='submit'
-                    btnText='Register'
+                    $btnText='Register'
                 />
                 <br /><br />
                 <button onClick={() => props.setPage('login')}>Already a member? Login</button>

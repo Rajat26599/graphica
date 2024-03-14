@@ -20,4 +20,9 @@ export const setLogin = (isLogin) => {
     }
 }
 
-
+export const showAuthModal = (bool) => {
+    return {
+        type: actionTypes.SHOW_AUTH_MODAL,
+        payload: bool
+    }
+}

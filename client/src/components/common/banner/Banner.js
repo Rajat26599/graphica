@@ -3,7 +3,7 @@ import { BannerWrapper, Tagline, Subtagline, ButtonArea, ImageWrapper } from "./
 
 export const Banner = (props) => {
     return (
-        <BannerWrapper backgroundColor={props.backgroundColor}>
+        <BannerWrapper $backgroundColor={props.$backgroundColor}>
             <div>
                 <Tagline>
                     {props.taglineLineOne} <br /> {props.taglineLineTwoPartOne} <span style={{color:`${props.taglineLineTwoPartTwoColor}`}}>{props.taglineLineTwoPartTwo}</span>
@@ -12,7 +12,7 @@ export const Banner = (props) => {
                     {props.subtagline}
                 </Subtagline>
                 <ButtonArea>
-                    <Button btnText={props.btnText} onClick={props.onClick}></Button>
+                    <Button $btnText={props.$btnText} onClick={props.onClick}></Button>
                 </ButtonArea>
                 {props.children}
             </div>

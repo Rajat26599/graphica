@@ -9,7 +9,7 @@ export const DialogModal = (props) => {
                 <DialogModalWrapper>
                     <p>{props.text}</p>
                     <FooterWrapper>
-                        <Button btnText={props.primaryBtnText} onClick={props.onClose}></Button>
+                        <Button $btnText={props.primaryBtnText} onClick={props.onClose}></Button>
                     </FooterWrapper>
                 </DialogModalWrapper>
                 : null

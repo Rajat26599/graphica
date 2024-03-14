@@ -2,10 +2,11 @@ import { actionTypes } from "../actions/actionTypes"
 
 const initialState = {
     userData: {
-        usreName: null,
+        email: null,
         roles: null,
     },
     isLogin: false,
+    showAuthModal: false,
 }
 
 export const authReducers = (state = initialState, action) => {
@@ -16,6 +17,8 @@ export const authReducers = (state = initialState, action) => {
             return {...state, userData: initialState.userData}
         case actionTypes.SET_LOGIN:
             return {...state, isLogin: action.payload}
+        case actionTypes.SHOW_AUTH_MODAL:
+            return {...state, showAuthModal: action.payload}
         default:
             return state
     }

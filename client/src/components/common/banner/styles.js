@@ -6,7 +6,7 @@ export const BannerWrapper = styled.div `
     justify-content: center;
     align-items: center;
     padding: 20px ${desktop.horizontalSpacing};
-    background-color: ${props => props.backgroundColor};
+    background-color: ${props => props.$backgroundColor};
 `
 
 export const Tagline = styled.h1 `

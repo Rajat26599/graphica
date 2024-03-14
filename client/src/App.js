@@ -13,7 +13,7 @@ function App() {
       <BrowserRouter>      
         <Navbar 
           logo={'graphica'} 
-          btnText={'Login / Signup'}
+          $btnText={'Login / Signup'}
         />
         <Routes>
           <Route path='/' element={<Home />} />

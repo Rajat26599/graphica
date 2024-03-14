@@ -12,14 +12,14 @@ export const Modal = (props) => {
                         {props.children}
                         <FooterWrapper>
                             <SecondaryButton
-                                btnText={props.closeBtnText}
+                                $btnText={props.closeBtnText}
                                 onClick={props.onClose}
                                 ></SecondaryButton>
                             <RightButtons>
                                 {
                                     props.thirdBtnText?
                                         <Button
-                                            btnText={props.thirdBtnText} 
+                                            $btnText={props.thirdBtnText} 
                                             onClick={props.thirdBtnClick}
                                             ></Button> : null
                                 }
@@ -27,7 +27,7 @@ export const Modal = (props) => {
                                 {
                                     props.primaryBtnText?
                                         <Button 
-                                            btnText={props.primaryBtnText} 
+                                            $btnText={props.primaryBtnText} 
                                             onClick={props.primaryBtnClick}
                                             ></Button> : null
                                 }
