@@ -42,7 +42,7 @@ export const DocType = (props) => {
 
         props.documentType === 'Other' && setShowCustomDocumentInput(true)
         props.documentSize === 'Other' && setShowCustomSizeInput(true)
-    }, [])
+    }, [props.documentType, props.documentSize])
 
     const handleDocumentTypeChange = (value) => {
         props.setDocumentType(value)

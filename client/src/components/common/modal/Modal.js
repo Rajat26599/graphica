@@ -29,17 +29,19 @@ export const Modal = (props) => {
                                 {
                                     props.thirdBtnText?
                                         <Button
-                                            $btnText={props.thirdBtnText} 
                                             onClick={props.thirdBtnClick}
-                                            ></Button> : null
+                                            >
+                                            {props.thirdBtnText}
+                                        </Button> : null
                                 }
                                 <ThirdButtonSpacer></ThirdButtonSpacer>
                                 {
                                     props.primaryBtnText?
                                         <Button 
-                                            $btnText={props.primaryBtnText} 
                                             onClick={props.primaryBtnClick}
-                                            ></Button> : null
+                                            >
+                                            {props.primaryBtnText} 
+                                        </Button> : null
                                 }
                             </RightButtons>
                         </FooterWrapper>

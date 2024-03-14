@@ -12,7 +12,7 @@ export const Banner = (props) => {
                     {props.subtagline}
                 </Subtagline>
                 <ButtonArea>
-                    <Button $btnText={props.$btnText} onClick={props.onClick}></Button>
+                    <Button onClick={props.onClick}>{props.$btnText}</Button>
                 </ButtonArea>
                 {props.children}
             </div>

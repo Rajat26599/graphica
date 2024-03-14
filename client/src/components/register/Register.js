@@ -84,8 +84,9 @@ export const Register = (props) => {
 
                 <Button 
                     type='submit'
-                    $btnText='Register'
-                />
+                    >
+                    Register
+                </Button>
             
                 <GoToLogin onClick={() => props.setPage('login')}>Already a member? Login</GoToLogin>
             </RegisterForm>
