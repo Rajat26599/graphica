@@ -30,6 +30,7 @@ export const UserAccountWrapper = styled.div`
     background-color: darkblue;
     margin-right: 1rem;
     cursor: pointer;
+    border: 2px solid white;
 
     &:hover {
         background-color: ${colors.pink};
@@ -41,6 +42,7 @@ export const UserNameInitialsWrapper = styled.dt`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-weight: bold;
 `
 export const LogoutButtonWrapper = styled.h2`
     cursor: pointer;

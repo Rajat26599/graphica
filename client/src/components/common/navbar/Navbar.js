@@ -8,17 +8,17 @@ import Login from "../../login/Login"
 
 import { connect, useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { setLogin, clearUserData } from "../../../redux/actions/authActions"
+import { setLogin, clearUserData, showAuthModal } from "../../../redux/actions/authActions"
 
 const mapStateToProps = (state) => {
     return {
         isLogin: state.authReducers.isLogin,
-        userData: state.authReducers.userData
+        userData: state.authReducers.userData,
+        showAuthModal: state.authReducers.showAuthModal,
     }
 }
 
 const Navbar = (props) => {
-    const [ isOpen, setIsOpen ] = useState(false)
     const [ page, setPage ] = useState('register')
 
     const dispatch = useDispatch()
@@ -26,8 +26,8 @@ const Navbar = (props) => {
 
     // If login is success close the auth modal
     useEffect(() => {
-        setIsOpen(false)
-    }, [props.isLogin])
+        dispatch(showAuthModal(false))
+    }, [props.isLogin, dispatch])
 
     const onLogout = () => {
         dispatch(setLogin(false))
@@ -43,8 +43,10 @@ const Navbar = (props) => {
                 {props.logo}
             </LogoWrapper>
             <Modal
-                isOpen={isOpen} 
-                onClose={() => setIsOpen(false)}
+                isOpen={props.showAuthModal} 
+                onClose={() => {
+                    dispatch(showAuthModal(false))
+                }}
             >
                 {
                     page === 'register' ?
@@ -54,12 +56,7 @@ const Navbar = (props) => {
                     
                 }
             </Modal>
-            {/* <DialogModal 
-                isOpen={isOpen} 
-                onClose={() => setIsOpen(false)}
-                text={'Feature Unavailable'}
-                primaryBtnText={'Ok'}
-            ></DialogModal> */}
+
             <LoginButtonWrapper>
                 {
                     props.isLogin ?
@@ -69,7 +66,7 @@ const Navbar = (props) => {
                                 onClick={() => navigate('/dashboard')}
                             >
                                 <UserNameInitialsWrapper>
-                                    RS
+                                    { props.userData.email ? props.userData.email[0].toUpperCase() : 'D'}
                                 </UserNameInitialsWrapper>
                             </UserAccountWrapper>                    
                             <LogoutButtonWrapper
@@ -81,8 +78,8 @@ const Navbar = (props) => {
                         </>
                     :
                         <Button
-                            btnText={props.btnText}
-                            onClick={() => setIsOpen(true)}
+                            $btnText={props.$btnText}
+                            onClick={() => dispatch(showAuthModal(true))}
                         />
                 }
             </LoginButtonWrapper>

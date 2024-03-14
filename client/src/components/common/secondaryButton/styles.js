@@ -35,7 +35,7 @@ export const ButtonWrapper = styled.button `
       }
     
     &::after {
-    content: "${props => props.btnText || 'Close'}";
+    content: "${props => props.$btnText || 'Close'}";
     background-image: linear-gradient(to right, #fc6076, #ff9a44, #ef9d43, #e75516);
     -webkit-background-clip: text;
     color: transparent;
