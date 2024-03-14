@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { DropdownOptions } from "../dropdownOptions/DropdownOptions"
 import { Label } from "../label/Label"
 import { AutoCompleteWrapper, WritingArea } from "./styles"
+import { SubLabel } from "../subLabel/SubLabel"
 
 export const AutoComplete = (props) => {
     const [showDropdownOptions, setShowDropdownOptions] = useState(true)
@@ -13,7 +14,8 @@ export const AutoComplete = (props) => {
 
     return (
         <AutoCompleteWrapper>
-            <Label label={props.label}></Label>
+            <Label>{props.label}</Label>
+            <SubLabel>{props.subLabel}</SubLabel>
             <WritingArea placeholder={props.placeholder} onChange={props.onChange} value={props.value}></WritingArea>
             {
                 showDropdownOptions && 

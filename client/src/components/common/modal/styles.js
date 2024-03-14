@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { screenWidth } from '../../constants/globalStyleVariables';
 
 export const ModalOutside = styled.div `
     position: absolute;
@@ -20,6 +21,12 @@ export const ModalWrapper = styled.div `
     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
     border-radius: 3px;
     padding: 2rem;
+
+    @media (max-width: ${screenWidth.medium})  { 
+        height: 100vh;
+        width: calc(100vw - 4rem);
+        top: 0;
+    }
 `
 
 export const FooterWrapper = styled.div `

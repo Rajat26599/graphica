@@ -52,7 +52,7 @@ const AdminDashboard = (props) => {
 
     return (
         <>
-            <h2>Admin Dashboard</h2>
+            <h2>Admin dashboard</h2>
             <BackgroundBoardWrapper>
                 <BackgroundBoard
                     $borderStyles={{

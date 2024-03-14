@@ -33,7 +33,7 @@ const DesignerDashboard = (props) => {
 
     return (
         <>
-            <h2>Designer Dashboard</h2>
+            <h2>Designer dashboard</h2>
             <BackgroundBoard
                 $borderStyles={{
                     width: '1px',
