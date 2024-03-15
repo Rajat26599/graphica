@@ -5,6 +5,7 @@ import { ModalWrapper, FooterWrapper, ModalOutside, RightButtons, ThirdButtonSpa
 import { screenWidth } from "../../constants/globalStyleVariables"
 
 export const Modal = (props) => {
+    // Prevent scrolling for medium screens when modal is opened
     useEffect(() => {
         if(props.isOpen && (window.screen.width <= parseInt(screenWidth.medium))) {
             window.scrollTo(0, 0);
