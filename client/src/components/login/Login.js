@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux"
 
 import { setLogin, setUserData } from "../../redux/actions/authActions"
 import { endpoints } from "../constants/endpoints"
+import { setIsLoading } from "../../redux/actions/spinnerActions"
 
 const mapStateToProps = (state) => {
     return {
@@ -26,6 +27,7 @@ const Login = (props) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
+        dispatch(setIsLoading(true))
         fetch(process.env.REACT_APP_SERVER_URL + endpoints.AUTH_LOGIN, {
             method: 'post',
             headers: {
@@ -46,6 +48,9 @@ const Login = (props) => {
                 }
             })
             .catch(e => console.log(e))
+            .finally(() => {
+                dispatch(setIsLoading(false))
+            })
     }
 
     const getAlert = () => {

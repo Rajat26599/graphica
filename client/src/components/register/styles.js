@@ -15,8 +15,10 @@ export const Roles = styled.li`
     margin-right: 1rem;
 `
 export const GoToLogin = styled.p`
+    color: blue;
+    
     &:hover {
-        color: blue;
         text-decoration: underline;
+        cursor: pointer;
     }
 `

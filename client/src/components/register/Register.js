@@ -3,14 +3,19 @@ import { Input } from "../common/input/Input"
 import { GoToLogin, RegisterForm, RegisterWrapper, Roles, RolesList } from "./styles"
 import { Button } from "../common/button/Button"
 import { endpoints } from "../constants/endpoints"
+import { setIsLoading } from "../../redux/actions/spinnerActions"
+import { useDispatch } from "react-redux"
 
 export const Register = (props) => {
     const [ email, setEmail ] = useState('')
     const [ password, setPassword ] = useState('')
     const [ roles, setRoles ] = useState([])
+
+    const dispatch = useDispatch()
     
     const handleSubmit = (e) => {
         e.preventDefault();
+        dispatch(setIsLoading(true))
         fetch(process.env.REACT_APP_SERVER_URL + endpoints.AUTH_REGISTER, {
             method: 'post',
             headers: {
@@ -29,6 +34,9 @@ export const Register = (props) => {
                 }
             })
             .catch(e => console.log(e))
+            .finally(() => {
+                dispatch(setIsLoading(false))
+            })
     }
 
     return (
